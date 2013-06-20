@@ -1,4 +1,53 @@
 <html>
-    <head></head>
-    <body>Login</body>
+
+    <head>
+
+    </head>
+
+    <body>
+        Login
+        <div id="fb-root"></div>
+            <script>
+              // Additional JS functions here
+              window.fbAsyncInit = function() {
+                FB.init({
+                  appId      : '150863331766164', // App ID
+                  channelUrl : '//www.melaniecebula.com/channel.html', // Channel File
+                  status     : true, // check login status
+                  cookie     : true, // enable cookies to allow the server to access the session
+                  xfbml      : true  // parse XFBML
+                });
+
+                // Additional init code here
+                FB.Event.subscribe('auth.authResponseChange', function(response) {
+                    if (response.status == 'connected') {
+                        testAPI();
+                    } else if (response.status == 'not_authorized') {
+                        FB.login();
+                    }
+                });
+              };
+
+              // Load the SDK asynchronously
+              (function(d){
+                 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                 if (d.getElementById(id)) {return;}
+                 js = d.createElement('script'); js.id = id; js.async = true;
+                 js.src = "//connect.facebook.net/en_US/all.js";
+                 ref.parentNode.insertBefore(js, ref);
+               }(document));
+
+              //very simple test of Graph API after login is successful.  testAPI() function only called in those cases
+              function testAPI() {
+                console.log('Welcome!  Fetching your information.... ');
+                FB.api('/me', function(response) {
+                    console.log('Good to see you, ' + response.name + '.');
+                });
+              }
+              
+            </script>
+
+        <!-- fb login button -->
+        <fb: login-button show-faces="true" width="200" max-rows="1"><fb:login-button>
+    </body>
 </html>
