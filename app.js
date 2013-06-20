@@ -23,7 +23,9 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-//basic served file
+//TODO:  check to see if user is logged in/ connected to fb already
+//redirect to '/'
+//TODO: sockets?  db?
 app.get('/', function(req, res) {
     res.render("login");
 });

@@ -1,11 +1,14 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <html>
+<head> 
+    <!-- tab text -->
+    <title>BART socially!</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+</head>
 
-    <head>
-
-    </head>
-
-    <body>
-        Login
+<body>
+        bartwith.me
         <div id="fb-root"></div>
             <script>
               // Additional JS functions here
@@ -21,7 +24,7 @@
                 // Additional init code here
                 FB.Event.subscribe('auth.authResponseChange', function(response) {
                     if (response.status == 'connected') {
-                        testAPI();
+                        connectedFunc();
                     } else if (response.status == 'not_authorized') {
                         FB.login();
                     }
@@ -37,11 +40,12 @@
                  ref.parentNode.insertBefore(js, ref);
                }(document));
 
-              //very simple test of Graph API after login is successful.  testAPI() function only called in those cases
-              function testAPI() {
-                console.log('Welcome!  Fetching your information.... ');
+              //once a user has connected
+              //TODO:  Once a user is 'connected', (redirect), use ejs to say 'Hello <user>'
+              function connectedFunc() {
+                console.log('Fetching user information....');
                 FB.api('/me', function(response) {
-                    console.log('Good to see you, ' + response.name + '.');
+                    console.log(response.name + ' has logged in.');
                 });
               }
               
@@ -49,5 +53,5 @@
 
         <!-- fb login button -->
         <fb: login-button show-faces="true" width="200" max-rows="1"><fb:login-button>
-    </body>
+</body>
 </html>
