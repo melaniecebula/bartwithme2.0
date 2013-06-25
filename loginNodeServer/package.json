@@ -16,11 +16,14 @@
     "formidable": "*",
     "connect-mongodb": "*",
     "express-form": "*",
-    "node_hash": "*"
+    "node_hash": "*",
+    "util": "*",
+    "restler": "*",
+    "xml2js": "*"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AjayTripathy/dataHub.git"
+    "url": "https://github.com/melaniecebula/bartwithme2.0.git"
   },
   "author": "Melanie",
   "license": "SUPER RESTRICTIVE"
