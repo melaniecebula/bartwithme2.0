@@ -1,0 +1,199 @@
+<!-- TODO: change id's of submit form -->
+<div class="content content-center">
+  <h1 class="title">Enter your Bart info</h1>
+  <div class="well login-well">
+    <form action="/login" method="post" accept-charset="utf-8">
+        <div class="autocomplete">
+      <label for="location">
+         <span class="form-label">Location:</span>
+         <br>
+         <input type="text" name="location" id="location" value="" placeholder="ex: Lake Merritt"/>
+       </label>
+   </div>
+      <label for="destination">
+        <span class="form-label">Destination:</span>
+        <br>
+        <input type="text" name="destination" id="destination" value="" placeholder="ex: Downtown Berkeley"/> 
+      </label>
+      <label for="departure">
+        <span class="form-label">Departure Time:</span?>
+            <br>
+            <input type="text" name="departure time" id=
+            "departuretime" value="" placeholder="ex: 4:25 pm"/>
+        </label>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div>
+    <h3>Use BART trip planner:</h3>
+  </div>
+  <div>
+    <!-- can't find mobile version :C -->
+  <IFRAME title="BART QuickPlanner" name="BART QuickPlanner" src="http://www.bart.gov/dev/schedules/iframe_quickplanner2.aspx" frameBorder="0" width="225" height="190" scrolling="no"></IFRAME>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    var stations = [
+        "12th St. Oakland City Center",
+        "16th    16th St. Mission (SF)",
+        "19th St. Oakland",
+        "24th St. Mission (SF)",
+        "Ashby (Berkeley)",
+        "Balboa Park (SF)",
+        "Bay Fair (San Leandro)",
+        "Castro Valley",
+        "Civic Center (SF)",
+        "Coliseum/Oakland Airport",
+        "Colma",
+        "Concord",
+        "Daly City",
+        "Downtown Berkeley",
+        "Dublin/Pleasanton",
+        "El Cerrito del Norte",
+        "El Cerrito Plaza",
+        "Embarcadero (SF)",
+        "Fremont",
+        "Fruitvale (Oakland)",
+        "Glen Park (SF)",
+        "Hayward",
+        "Lafayette",
+        "Lake Merritt (Oakland)",
+        "MacArthur (Oakland)",
+        "Millbrae",
+        "Montgomery St. (SF)",
+        "North Berkeley",
+        "North Concord/Martinez",
+        "Orinda",
+        "Pittsburg/Bay Point",
+        "Pleasant Hill",
+        "Powell St. (SF)",
+        "Richmond",
+        "Rockridge (Oakland)",
+        "San Bruno",
+        "San Francisco Int'l Airport",
+        "San Leandro",
+        "South Hayward",
+        "South San Francisco",
+        "Union City",
+        "Walnut Creek",
+        "West Oakland"
+    ];
+    $( "#location" ).autocomplete({
+        source: stations
+    });
+  });
+  </script>
+  <!-- idk why I can't do it twice in one script..?-->
+  <script>
+    $(function() {
+    var stations = [
+        "12th St. Oakland City Center",
+        "16th    16th St. Mission (SF)",
+        "19th St. Oakland",
+        "24th St. Mission (SF)",
+        "Ashby (Berkeley)",
+        "Balboa Park (SF)",
+        "Bay Fair (San Leandro)",
+        "Castro Valley",
+        "Civic Center (SF)",
+        "Coliseum/Oakland Airport",
+        "Colma",
+        "Concord",
+        "Daly City",
+        "Downtown Berkeley",
+        "Dublin/Pleasanton",
+        "El Cerrito del Norte",
+        "El Cerrito Plaza",
+        "Embarcadero (SF)",
+        "Fremont",
+        "Fruitvale (Oakland)",
+        "Glen Park (SF)",
+        "Hayward",
+        "Lafayette",
+        "Lake Merritt (Oakland)",
+        "MacArthur (Oakland)",
+        "Millbrae",
+        "Montgomery St. (SF)",
+        "North Berkeley",
+        "North Concord/Martinez",
+        "Orinda",
+        "Pittsburg/Bay Point",
+        "Pleasant Hill",
+        "Powell St. (SF)",
+        "Richmond",
+        "Rockridge (Oakland)",
+        "San Bruno",
+        "San Francisco Int'l Airport",
+        "San Leandro",
+        "South Hayward",
+        "South San Francisco",
+        "Union City",
+        "Walnut Creek",
+        "West Oakland"
+    ];
+    $( "#destination" ).autocomplete({
+        source: stations
+    });
+  });
+  </script>
+  <script>
+  $("#location").keypress(function(e) {
+    var code = (e.keyCode ? e.keyCode : e.which);
+    if(code == 13) { //Enter keycode
+        return false;
+    }
+});
+  </script>
+  <script>
+  $("#destination").keypress(function(e) {
+    var code = (e.keyCode ? e.keyCode : e.which);
+    if(code == 13) { //Enter keycode
+        return false;
+    }
+});
+  </script>
+
+<!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script>
+  $(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+  </script>
+</head>
+<body>
+ 
+<div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags" />
+</div>

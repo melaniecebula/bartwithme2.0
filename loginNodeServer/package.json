@@ -1,0 +1,27 @@
+{
+  "name": "testNodeLogin",
+  "version": "0.0.0",
+  "description": "test",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies":{
+    "express": "<3",
+    "mongoskin": "*",
+    "connect-mongo": "*",
+    "socket.io": "*",
+    "async": "*",
+    "formidable": "*",
+    "connect-mongodb": "*",
+    "express-form": "*",
+    "node_hash": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AjayTripathy/dataHub.git"
+  },
+  "author": "Melanie",
+  "license": "SUPER RESTRICTIVE"
+}
