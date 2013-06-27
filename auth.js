@@ -46,7 +46,10 @@ exports.bartTrip = function(req, res) {
     console.log(req.form.origin, req.form.destination, req.form.time);
     //console.log(bart.getTimes(req.form.origin, req.form.destination, req.form.time));
     var done = function(result) {
-        res.send(result);
+        object = {}
+        object.info = result;
+        res.send(result[0]);
+        //res.render('trains', object);
     }
     bart.getTimes(req.form.origin, req.form.destination, req.form.time, done);
 }
