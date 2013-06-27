@@ -5,6 +5,7 @@ var ObjectID = require('mongoskin').ObjectID;
 var db = mongo.db('localhost:27017/dataHub?auto_reconnect', {safe: true});
 var Users = db.collection('Users');
 var hash = require('node_hash');
+var bart = require("./bart.js");
 
 var generateId = function(){
     console.log("generating ID")
@@ -34,6 +35,27 @@ exports.register = function(req, res){
         res.redirect('/');
     });
 }
+
+exports.bartTrip = function(req, res) {
+    console.log('BARTing')
+    if (!req.form.isValid) {
+      res.send({'status': 'error', 'msg': 'fill out origin, destination, and time'});
+      return;
+    }
+    console.log('form is valid');
+    console.log(req.form.origin, req.form.destination, req.form.time);
+    //console.log(bart.getTimes(req.form.origin, req.form.destination, req.form.time));
+    var done = function(result) {
+        res.send(result);
+    }
+    bart.getTimes(req.form.origin, req.form.destination, req.form.time, done);
+}
+
+exports.validateBart = form(
+    field('origin').required('Origin', 'Please enter your current station').toUpper().trim(),
+    field('destination').required('Destination', 'Please enter a destination').toUpper().trim(),
+    field('time').required('Time', 'Please enter a valid #:##am/pm time').trim()
+);
 
 exports.validateLogin = form(
   field('email').required('Email', 'Please enter an email').toLower().trim().isEmail('Email address is not valid'), 
