@@ -4,11 +4,9 @@ var sys = require('util'),
     rest = require('restler'),
     xml2js = require('xml2js');
 
-//callback for getTime
-
 var parser = new xml2js.Parser();
 
-function getTimes (origin, destination, time) {
+exports.getTimes = function(origin, destination, time, done) {
     var query = {}
     query.cmd = "depart"
     query.orig = origin
@@ -25,11 +23,10 @@ function getTimes (origin, destination, time) {
         this.retry(5000); // try again after 5 sec
       } else {
         //console.log(result)
-        //return result
-        console.log(result.root.schedule[0].request[0].trip)
+        console.log('train results are in')
+        done(result.root.schedule[0].request[0].trip)
+        //console.log(result.root.schedule[0].request[0].trip)
         }   
    });
 }
-//example call with callback passed in
-getTimes("ASHB", "CIVC", "10:00pm");
 

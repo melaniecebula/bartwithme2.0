@@ -24,6 +24,8 @@ app.use(express.cookieParser());
 app.use(express.session({ secret: '#yolo', maxAge : new Date(Date.now() + 2628000000)}));
 
 app.get('/', web.home);
+app.post('/', auth.validateBart, auth.bartTrip);
+
 
 app.get('/login', web.login);
 app.post('/login', auth.validateLogin, auth.login);

@@ -2,24 +2,24 @@
 <div class="content content-center">
   <h1 class="title">Enter your Bart info</h1>
   <div class="well login-well">
-    <form action="/login" method="post" accept-charset="utf-8">
+    <form action="/" method="post" accept-charset="utf-8">
         <div class="autocomplete">
-      <label for="location">
-         <span class="form-label">Location:</span>
+      <label for="origin">
+         <span class="form-label">Origin:</span>
          <br>
-         <input type="text" name="location" id="location" value="" placeholder="ex: Lake Merritt (station)"/>
+         <input type="text" name="origin" id="origin" value="" placeholder="ex: ASHB"/>
        </label>
    </div>
       <label for="destination">
         <span class="form-label">Destination:</span>
         <br>
-        <input type="text" name="destination" id="destination" value="" placeholder="ex: Fremont (train)"/> 
+        <input type="text" name="destination" id="destination" value="" placeholder="ex: CIVC"/> 
       </label>
-      <label for="departure">
-        <span class="form-label">Departure Time:</span?>
+      <label for="time">
+        <span class="form-label">Time:</span?>
             <br>
-            <input type="text" name="departure time" id=
-            "departuretime" value="" placeholder="ex: 4:25 pm"/>
+            <input type="text" name="time" id=
+            "time" value="" placeholder="ex: 5:00pm"/>
         </label>
       <button type="submit">Submit</button>
     </form>
@@ -34,6 +34,7 @@
 </div>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<!--
   <script>
   $(function() {
     var stations = [
@@ -87,6 +88,7 @@
   });
   </script>
   <!-- idk why I can't do it twice in one script..?-->
+  <!--
   <script>
     $(function() {
     var trains = [
@@ -118,45 +120,4 @@
     }
 });
   </script>
-
-<!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
-  <script>
-  $(function() {
-    var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#tags" ).autocomplete({
-      source: availableTags
-    });
-  });
-  </script>
-</head>
-<body>
- 
-<div class="ui-widget">
-  <label for="tags">Tags: </label>
-  <input id="tags" />
-</div>
+-->

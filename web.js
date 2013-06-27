@@ -21,3 +21,8 @@ exports.login = function(req, res) {
     var loggedIn = !!req.session.user;
     res.render('login', {loggedIn: loggedIn});
 };
+
+exports.trains = function(req, res) {
+    console.log('rendering available trains')
+    res.render('trains');
+}
