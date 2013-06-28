@@ -46,10 +46,41 @@ exports.bartTrip = function(req, res) {
     console.log(req.form.origin, req.form.destination, req.form.time);
     //console.log(bart.getTimes(req.form.origin, req.form.destination, req.form.time));
     var done = function(result) {
-        object = {}
-        object.info = result;
-        res.send(result[0]);
-        //res.render('trains', object);
+        //TODO:  make more train results.  right now only doing result[0], which are the earliest trips (too early!)
+        //perhaps a more programmatic way to generate information
+        // perhaps a for loop through result (type: list)?
+        console.log("0", result[0])
+        console.log("1", result[1])
+        console.log("2", result[2])
+        var origin = result[0]['$']['origin'];
+        var destination = result[0]['$']['destination'];
+        var fare = result[0]['$']['fare'];
+        var origTimeDate = result[0]['$']['origTimeDate'];
+        var origTimeMin = result[0]['$']['origTimeMin'];
+        var destTimeMin = result[0]['$']['destTimeMin'];
+        var destTimeDate = result[0]['$']['destTimeDate'];
+        if (result[0]['leg'] != undefined) {
+            var transfer1 = result[0]['leg'][0]['$']
+            //TODO:  sometimse there isn't another part to the leg :U; its like not a transfer, its another train??
+            var transfer2 = result[0]['leg'][1]['$']
+            var transfer1Code = transfer1['transfercode']
+            var transfer2Code = transfer2['transfercode']
+            var transferOrigin = transfer1['origin']
+            var transferPoint = transfer2['origin']
+            var transferDestination = transfer2['destination']
+            var transfer1origTimeMin = transfer1['origTimeMin']
+            var transfer1destTimeMin = transfer1['destTimeMin']
+            var transfer2origTimeMin = transfer2['origTimeMin']
+            var transfer2destTimeMin = transfer2['destTimeMin']
+            var transfer1Line = transfer1['line']
+            var transfer2Line = transfer2['line']
+            var trainHeadStation1 = transfer1['trainHeadStation']
+            var trainHeadStation2 = transfer2['trainHeadStation']
+            res.render('trains', {transferO: transferOrigin, transferP: transferPoint, transferD: transferDestination, transferStart: transfer1origTimeMin, transferMid: transfer2origTimeMin, transferEnd: transfer2destTimeMin, origin: origin, dest: destination, fare: fare, origTime: origTimeMin, origDate: origTimeDate, destTime: destTimeMin, destDate: destTimeDate})
+            }   else {
+                    res.render('trains', {origin: origin, dest: destination, fare: fare, origTime: origTimeMin, origDate: origTimeDate, destTime: destTimeMin, destDate: destTimeDate})
+        }
+                
     }
     bart.getTimes(req.form.origin, req.form.destination, req.form.time, done);
 }

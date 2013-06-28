@@ -20,7 +20,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.bodyParser());
 app.use(express.cookieParser());
 
-
+//TODO:  change trains form to a request!  smoother, easier
 app.use(express.session({ secret: '#yolo', maxAge : new Date(Date.now() + 2628000000)}));
 
 app.get('/', web.home);
